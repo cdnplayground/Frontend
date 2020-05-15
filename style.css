@@ -1,0 +1,125 @@
+:root {
+	--primary: #212121;
+	--dark: #000;
+	--accent: #D4AF37;
+	--accent-dark: rgb(168, 138, 55);
+}
+
+:root {
+	box-sizing: border-box;
+    color:white;
+}
+
+*, ::before, ::after {
+	box-sizing: inherit;
+}
+
+::selection {
+    color: var(--primary);
+    background-color: var(--accent);
+}
+
+html, body {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+	overflow: hidden; /* overflow-x */
+	background: var(--primary);
+	color: var(--dark);
+	font-family: Quicksand, sans-serif;
+	font-weight: 400;
+}
+
+header {
+	display: flex;
+	align-items: center;
+	width: 100%;
+	justify-content: space-between;
+	padding: 1em;
+	user-select: none;
+    background-color: var(--primary);
+	box-shadow: 0 0 0.25em gainsboro;
+	color: #fff;
+}
+
+header > h1 {
+	font-weight: 400;
+	margin: 0;
+}
+
+.btn {
+	outline: none;
+	cursor: pointer;
+	transition: border 0.3s ease, background 0.3s ease, color 0.3s ease;
+	font-size: 1.1em;
+	padding: 0.5em;
+	user-select: none;
+}
+
+button.classic {
+	border-radius: 2px;
+	border: 2px solid var(--accent);
+	color: #fff;
+	background: var(--accent);
+}
+
+button.classic:hover {
+	background: var(--accent-dark);
+	color: #fff;
+}
+
+button.empty {
+	border: none;
+	border-bottom: 2px solid #fff;
+	color: #fff;
+	background: transparent;
+}
+
+button.empty:hover {
+	color: var(--accent);
+	border-bottom: 2px solid var(--accent);
+}
+
+div.banner {
+	padding: 1em;
+	min-height: calc(100vh / 3);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	justify-content: center;
+	color: #fff;
+	/* background: var(--accent); */
+}
+
+div.banner > h2 {
+	font-size: 3em;
+	margin: 0 0 0.5em 0;
+}
+
+.link {
+    display: inline-block;
+    color: #fff;
+    text-decoration: none;
+}
+
+.link::after {
+    content: "";
+    display: block;
+	position: relative;
+	left: 50%;
+	transform: translateY(0.5em) translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: var(--accent);
+    transition: width 0.3s ease;
+}
+
+.link:hover::after {
+    width: 100%;
+}
+
+section {
+    text-align: center;
+}
