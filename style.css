@@ -2,21 +2,12 @@
 	--primary: #212121;
 	--dark: #000;
 	--accent: #D4AF37;
-	--accent-dark: rgb(168, 138, 55);
-}
-
-:root {
-	box-sizing: border-box;
-    color:white;
-}
-
-*, ::before, ::after {
-	box-sizing: inherit;
+	--accent-dark: rgb(170, 140, 50);
 }
 
 ::selection {
     color: var(--primary);
-    background-color: var(--accent);
+    background-color: #fff;
 }
 
 html, body {
@@ -24,18 +15,23 @@ html, body {
     margin: 0;
     width: 100%;
     height: 100%;
-	overflow: hidden; /* overflow-x */
+	overflow: hidden;
 	background: var(--primary);
 	color: var(--dark);
-	font-family: Quicksand, sans-serif;
+	box-sizing: border-box;
+	font-family: 'Monsterrat', sans-serif;
 	font-weight: 400;
+}
+
+*, ::before, ::after {
+	box-sizing: inherit;
 }
 
 header {
 	display: flex;
 	align-items: center;
-	width: 100%;
 	justify-content: space-between;
+	width: 100%;
 	padding: 1em;
 	user-select: none;
     background-color: var(--primary);
@@ -81,8 +77,8 @@ button.empty:hover {
 	border-bottom: 2px solid var(--accent);
 }
 
-div.banner {
-	padding: 1em;
+section.banner {
+	padding: 2em 1em;
 	min-height: calc(100vh / 3);
 	display: flex;
 	flex-direction: column;
@@ -93,9 +89,11 @@ div.banner {
 	/* background: var(--accent); */
 }
 
-div.banner > h2 {
+section.banner > h2 {
 	font-size: 3em;
+	font-weight: 500;
 	margin: 0 0 0.5em 0;
+	text-shadow: 0 0 0.5em #fff;
 }
 
 .link {
@@ -105,21 +103,70 @@ div.banner > h2 {
 }
 
 .link::after {
-    content: "";
-    display: block;
-	position: relative;
-	left: 50%;
-	transform: translateY(0.5em) translateX(-50%);
-    width: 0;
-    height: 2px;
-    background: var(--accent);
-    transition: width 0.3s ease;
+    display:block;
+    content: '';
+    border-bottom: solid 3px var(--accent);  
+    transform: scaleX(0);  
+    transition: transform 250ms ease-in-out;
 }
 
 .link:hover::after {
-    width: 100%;
+    transform: scaleX(1);
 }
 
-section {
+.container {
+    margin: auto;
+    display: block;
     text-align: center;
+}
+
+form .field {
+    position: relative;
+    margin: 2rem;
+}
+
+form .field .placeholder {
+    position: absolute;
+    opacity: 0.5;
+    top: 0.7vh;
+    left: 42vw;
+    transition: 0.25s;
+    color: black;
+    z-index: 1;
+}
+
+form .field input:valid:not(:focus) + .placeholder {
+    z-index: 1;
+    color: white;
+} /* two small bugs: one, if the user clicks on the placeholder, it does not select the input, and two: the web page is not responsive */
+/* could you fix those? i gtg */
+
+form .field input:focus + .placeholder {
+    top: -1.5rem;
+    color: white;
+    display: block;
+    font-size: 10pt;
+}
+
+form .field input {
+    outline: none;
+    border: none;
+    padding: 0.5vw;
+    border-radius: 5px 5px;
+    z-index: 2;
+}
+
+form input[type=submit] {
+    border-radius: 5px 5px;
+    padding: 1vw;
+    color: white;
+    background-color: var(--primary);
+    border: 1px solid white;
+    box-shadow: var(--dark) 0px 5px 0px;
+    text-align: center;
+}
+
+form input[type=submit]:focus {
+    box-shadow: var(--dark) 0px 0px 0px;
+    transform: translate(0px, 5px);
 }
